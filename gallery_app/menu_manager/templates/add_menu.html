@@ -1,0 +1,11 @@
+<template> <form method=“post” action=“{% url ‘menu_manager:add_menu’ %}” id=“addMenuForm”> {% csrf_token %} <label for=“parentMenu”>Select a menu from the list or enter its ID:</label><br/>
+    <select name=“parentMenu” id=“parentMenu”> {% for parent_menu in parent_menus %} <option value=“{{ parent_menu.id }}” selected>{{ parent_menu.name }}</option> {% endfor %} </select>
+
+     <input type="hidden" name="parent_menu_"
+            value=“{{ request.GET.get(‘parent_menu’) }}”>
+
+<label for=“name”>Enter a name:</label><br/>
+    <input type=“text” id=“nameInput” name=“name”><br/> <label for=“url”>Enter a URL:
+    </label><br/> <input type=“text” id=“urlInput” name=“url”><br/> <button type=“submit”>Add Menu Item</button> </form>
+</template>
+

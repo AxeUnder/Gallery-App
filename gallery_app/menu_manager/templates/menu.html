@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block menu %}
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'menu_manager:menu_list' %}">Menus</a>
+    </li>
+    {% for menu in menus %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'menu_manager:get_menu_item' menu.pk %}">{{ menu.name }}</a>
+        </li>
+    {% endfor %}
+{% endblock %}
+
+{% block content %}
+    <h1>Menu List</h1>
+    <ul>
+        {% for menu in menus %}
+            <li>{{ menu.name }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
